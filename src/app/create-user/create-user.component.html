@@ -1,0 +1,68 @@
+<div style="display: flex;justify-content: center; align-items: center; height: 100vh;">
+    <mat-card>
+      <mat-card-content>
+        <h1>Kayıt Ol</h1>
+        <form [formGroup]="createUserForm" style="display: flex; flex-direction: column;min-width: 30vw;">
+          <mat-form-field>
+            <mat-label>Adınız</mat-label>
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="createUserForm.get('firstName')?.hasError('required')">
+              Adınızı girmeniz zorunludur
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Soyadınız</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="createUserForm.get('lastName')?.hasError('required')">
+              Soyadınızı girmeniz zorunludur
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-error *ngIf="createUserForm.get('email')?.hasError('required')">
+              Email zorunludur
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('email')?.hasError('email')">
+              Doğru formatta giriniz
+            </mat-error>
+            <mat-label>E-Mail</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-error *ngIf="createUserForm.get('password')?.hasError('required')">
+              Şifre zorunludur
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('password')?.hasError('minlength')">
+              Şifreyi minimum 8 karakter uzunluğunda giriniz.
+            </mat-error>
+            <mat-label>Şifre</mat-label>
+            <input matInput formControlName="password">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-error *ngIf="createUserForm.get('repassword')?.hasError('not_the_same')">
+              Şifreyi farklı girmeyiniz
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('repassword')?.hasError('required')">
+              Şifrenizi yeniden girmeniz zorunludur
+            </mat-error>
+            <mat-error *ngIf="createUserForm.get('repassword')?.hasError('minlength')">
+              Şifreyi minimum 8 karakter uzunluğunda giriniz.
+            </mat-error>
+            <mat-label>Şifre</mat-label>
+            <input matInput formControlName="repassword">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Adresiniz</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+            <mat-error *ngIf="createUserForm.get('address')?.hasError('required')">
+              Adresinizi girmeniz zorunludur
+            </mat-error>
+          </mat-form-field>
+          <div style="display: flex;align-items: center;justify-content: space-between;">
+            <a mat-button routerLink="/login" style="color:black;text-decoration: none;">Giriş Yap</a>
+            <button mat-raised-button [disabled]="createUserForm.invalid" color="primary">Kayıt Ol</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>  
+  </div>
+  

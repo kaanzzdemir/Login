@@ -1,0 +1,4 @@
+.toolbarAlign{
+    display: flex;
+    justify-content: space-between;
+}
